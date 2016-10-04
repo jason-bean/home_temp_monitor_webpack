@@ -1,0 +1,5 @@
+node_modules
+src/mongoServer.json
+src/currentTempsServer.json
+src/client/public/js/bundle.js
+src/client/public/js/bundle.js.map

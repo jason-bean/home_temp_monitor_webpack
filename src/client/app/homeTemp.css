@@ -1,0 +1,187 @@
+﻿html {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: #f9f9f9;
+    font-size: 16px !important;
+    font-family: sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+.center-block {
+    float: none !important;
+}
+
+#header {
+    text-align: center;
+    align-content: center;
+}
+
+#pageTitle {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+#inputForm {
+    max-width: 329px;
+    display: inline-block;
+}
+
+#btnRefresh {
+    outline: none !important;
+}
+
+.currentTemps {
+    font-size: 16px;
+}
+
+#lstDiv {
+    margin:0 auto;
+}
+
+#chartArea {
+    margin-top:15px;
+}
+
+#chart_div {
+    box-shadow: 1px 1px 5px 1px rgb(192, 192, 192);
+}
+
+.canvasjs-chart-credit {
+   display: none;
+}
+
+#statsArea {
+    margin:0 auto;
+}
+
+table.stats {
+    margin-top: 10px;
+}
+
+table.stats tbody tr td:nth-child(2) {
+    width: 41.5%;
+}
+
+caption {
+    text-align: center !important;
+    color: black !important;
+    font-weight: bold;
+}
+
+th {
+    text-align: center !important;
+}
+
+td {
+    text-align: center;
+}
+
+#tblUpdated {
+    width: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#tblUpdated td {
+    text-align: left;
+}
+
+#tblUpdated td:first-child {
+    width: 80px;
+}
+
+@media screen and (max-width: 767px) {
+    #lstDiv {
+        width: 90%;
+    }
+
+    #chartTitle {
+        display: none;
+    }
+
+    #chart_div {
+        height: 337px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    #lstDiv {
+        width: 320px;
+    }
+
+    #chartTitle {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) and (orientation: portrait) {
+    #chart_div {
+        height: 615px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) and (orientation: landscape) {
+    #chart_div {
+        height: 360px;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    #chartTitle {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) and (orientation: portrait) {
+    #lstDiv {
+        width: 90%;
+    }
+
+    #chart_div {
+        height: 337px;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) and (orientation: landscape) {
+    #lstDiv {
+        width: 320px;
+    }
+
+    #chart_div {
+        height: 360px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #pageTitle {
+        font-size: 32px;
+    }
+
+    .currentTemps {
+        font-size: 20px;
+    }
+
+    #chartArea {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #chartTitle {
+        font-size:24px;
+        font-weight:bold;
+    }
+
+    #chart_div {
+        margin-top: 10px;
+        height: 600px;
+    }
+
+    caption {
+        font-size: 24px;
+    }
+}

@@ -17,47 +17,48 @@ module.exports = {
         loader: 'babel',
         query: {
           presets: ['es2015', 'react'],
+          plugins: ['transform-strict-mode'],
           compact: false
         }
       },
-      { 
-        test: /\.css$/, 
-        loader: 'style!css' 
+      {
+        test: /\.css$/,
+        loader: 'style!css'
       },
-      { 
-        test: /\.png$/, 
-        loader: 'url?limit=100000' 
+      {
+        test: /\.png$/,
+        loader: 'url?limit=100000'
       },
-      { 
-        test: /\.jpg$/, 
+      {
+        test: /\.jpg$/,
         loader: 'file'
       },
       {
-        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, 
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url?limit=10000&mimetype=application/font-woff&name=../fonts/[name].[ext]'
       },
       {
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url?limit=10000&mimetype=application/octet-stream&name=../fonts/[name].[ext]'
       },
       {
-        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file?name=../fonts/[name].[ext]'
       },
       {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url?limit=10000&mimetype=image/svg+xml&name=../fonts/[name].[ext]'
       }
     ]
   },
-  plugins:[
+  plugins: [
     new webpack.DefinePlugin({
-      'process.env':{
+      'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
-      compress:{
+      compress: {
         warnings: true
       }
     })

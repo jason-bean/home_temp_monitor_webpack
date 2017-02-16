@@ -8,10 +8,9 @@ COPY . /tmp
 RUN npm install
 RUN npm run build
 
-COPY src/ /usr/src/app
-COPY package.json /usr/src/app/
+COPY package.json src /usr/src/app/
 
-RUN rm -Rf *
+#RUN rm -Rf *
 
 WORKDIR /usr/src/app
 RUN npm install --production

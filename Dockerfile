@@ -8,16 +8,13 @@ COPY . /tmp
 RUN npm install
 RUN npm run build
 
-WORKDIR /usr/src/app
-
-# Install app dependencies
+COPY src/ /usr/src/app
 COPY package.json /usr/src/app/
+
+RUN rm -Rf *
+
+WORKDIR /usr/src/app
 RUN npm install --production
-
-# Bundle app source
-COPY /tmp/src /usr/src/app
-
-RUN rm -Rf /tmp/*
 
 EXPOSE 8080
 CMD [ "npm", "start" ]

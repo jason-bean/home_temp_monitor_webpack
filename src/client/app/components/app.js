@@ -38,7 +38,7 @@ class App extends React.Component {
   }
 
   loadCurrentTempsFromServer () {
-    fetch('/Temps/Current').then(response => {
+    fetch('Temps/Current').then(response => {
       return response.json()
     }).then(data => this.setState({currentTemps: data}))
   }
@@ -67,7 +67,7 @@ class App extends React.Component {
     } else if (navigator.userAgent.match(/iPad/i)) {
       if (selectedValue > 168) lineThickness = 0.5
     }
-    fetch('/Temps/DateRange?startDate=' + startDate.getTime() + '&endDate=' + endDate.getTime()).then(response => {
+    fetch('Temps/DateRange?startDate=' + startDate.getTime() + '&endDate=' + endDate.getTime()).then(response => {
       return response.json()
     }).then(data => {
       let minTemp = data['min_temp'][data['min_temp'].length - 1]

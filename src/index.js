@@ -9,7 +9,7 @@ let request = require('request')
 let mongoUrl
 let currentTempUrl
 
-fs.readFile('mongoServer.json', 'utf8', (err, data) => {
+let readMongoServer = (err, data) => {
   if (err) {
     return console.error(err)
   }
@@ -17,9 +17,9 @@ fs.readFile('mongoServer.json', 'utf8', (err, data) => {
   let mongoServer = JSON.parse(data)
   mongoUrl = 'mongodb://' + mongoServer.host + ':' + mongoServer.port + '/' + mongoServer.db
   console.log('Mongo URL: \'' + mongoUrl + '\'')
-})
+}
 
-fs.readFile('currentTempsServer.json', 'utf8', (err, data) => {
+let readCurrentTempServer = (err, data) => {
   if (err) {
     return console.error(err)
   }
@@ -27,7 +27,25 @@ fs.readFile('currentTempsServer.json', 'utf8', (err, data) => {
   let currentTempServer = JSON.parse(data)
   currentTempUrl = currentTempServer.prefix + '://' + currentTempServer.host + ':' + currentTempServer.port + currentTempServer.path
   console.log('Current Temp URL: ' + currentTempUrl)
-})
+}
+
+if (fs.existsSync('mongoServer.json')) {
+  fs.readFile('mongoServer.json', 'utf8', readMongoServer)
+} else if (fs.existsSync('/config/mongoServer.json')) {
+  fs.readFile('/config/mongoServer.json', 'utf8', readMongoServer)
+} else {
+  console.log('Error! mongoServer.json file not found.')
+  process.exit(1)
+}
+
+if (fs.existsSync('currentTempsServer.json')) {
+  fs.readFile('currentTempsServer.json', 'utf8', readCurrentTempServer)
+} else if (fs.existsSync('/config/currentTempsServer.json')) {
+  fs.readFile('/config/currentTempsServer.json', 'utf8', readCurrentTempServer)
+} else {
+  console.log('Error! currentTempsServer.json file not found.')
+  process.exit(1)
+}
 
 let port = '8080'
 

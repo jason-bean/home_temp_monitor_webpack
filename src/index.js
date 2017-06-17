@@ -29,19 +29,19 @@ let readCurrentTempServer = (err, data) => {
   console.log('Current Temp URL: ' + currentTempUrl)
 }
 
-if (fs.existsSync('mongoServer.json')) {
-  fs.readFile('mongoServer.json', 'utf8', readMongoServer)
-} else if (fs.existsSync('/config/mongoServer.json')) {
+if (fs.existsSync('/config/mongoServer.json')) {
   fs.readFile('/config/mongoServer.json', 'utf8', readMongoServer)
+} else if (fs.existsSync('mongoServer.json')) {
+  fs.readFile('mongoServer.json', 'utf8', readMongoServer)
 } else {
   console.log('Error! mongoServer.json file not found.')
   process.exit(1)
 }
 
-if (fs.existsSync('currentTempsServer.json')) {
-  fs.readFile('currentTempsServer.json', 'utf8', readCurrentTempServer)
-} else if (fs.existsSync('/config/currentTempsServer.json')) {
+if (fs.existsSync('/config/currentTempsServer.json')) {
   fs.readFile('/config/currentTempsServer.json', 'utf8', readCurrentTempServer)
+} else if (fs.existsSync('currentTempsServer.json')) {
+  fs.readFile('currentTempsServer.json', 'utf8', readCurrentTempServer)
 } else {
   console.log('Error! currentTempsServer.json file not found.')
   process.exit(1)

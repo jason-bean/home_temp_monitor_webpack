@@ -1,20 +1,21 @@
 var webpack = require('webpack')
 var path = require('path')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
-var BUILD_DIR = path.resolve(__dirname, 'src/client/public/js')
-var APP_DIR = path.resolve(__dirname, 'src/client/app')
+var BUILD_DIR = path.resolve(__dirname, 'build')
+var APP_DIR = path.resolve(__dirname, 'src')
 
 module.exports = {
-  entry: APP_DIR + '/main.js',
+  entry: path.resolve(APP_DIR + '/app/main.js'),
   output: {
-    path: BUILD_DIR,
+    path: path.resolve(BUILD_DIR + '/public/js'),
     filename: 'bundle.js'
   },
   module: {
     loaders: [
       {
         test: /\.js?/,
-        loader: 'babel',
+        loader: 'babel-loader',
         query: {
           presets: ['es2015', 'react'],
           compact: false
@@ -22,31 +23,23 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css'
-      },
-      {
-        test: /\.png$/,
-        loader: 'url?limit=100000'
-      },
-      {
-        test: /\.jpg$/,
-        loader: 'file'
+        loader: 'style-loader!css-loader'
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/font-woff&name=../fonts/[name].[ext]'
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff&name=../fonts/[name].[ext]'
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/octet-stream&name=../fonts/[name].[ext]'
+        loader: 'url-loader?limit=10000&mimetype=application/octet-stream&name=../fonts/[name].[ext]'
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file?name=../fonts/[name].[ext]'
+        loader: 'file-loader?name=../fonts/[name].[ext]'
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=image/svg+xml&name=../fonts/[name].[ext]'
+        loader: 'url-loader?limit=10000&mimetype=image/svg+xml&name=../fonts/[name].[ext]'
       }
     ]
   },
@@ -56,10 +49,15 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: true
+    new CopyWebpackPlugin([
+      {
+        from: 'src/public',
+        to: '../'
+      },
+      {
+        from: 'src/index.js',
+        to: '../../'
       }
-    })
+    ])
   ]
 }

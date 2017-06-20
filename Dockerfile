@@ -1,19 +1,14 @@
-FROM node:6.9.5
+FROM node:6-alpine
 
-# Create app directory
-RUN mkdir -p /usr/src/app /tmp
-WORKDIR /tmp
-COPY . /tmp
+RUN mkdir -p /home/webapp
+COPY . /home/webapp
+WORKDIR /home/webapp
 
 RUN npm install
 RUN npm run build
+RUN npm prune --production
 
-COPY package.json src /usr/src/app/
-
-#RUN rm -Rf *
-
-WORKDIR /usr/src/app
-RUN npm install --production
-
+VOLUME [/config]
 EXPOSE 8080
+USER nobody
 CMD [ "npm", "start" ]

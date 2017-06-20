@@ -1,6 +1,7 @@
 'use strict'
 import React from 'react'
 import DateFormat from '../helpers/DateFormat.js'
+import './canvasjs.min'
 
 let chart = null
 

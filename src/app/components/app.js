@@ -1,7 +1,6 @@
 'use strict'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import 'whatwg-fetch'
 
 import CurrentTemps from './CurrentTemps.js'
 import TempRangeForm from './TempRangeForm.js'

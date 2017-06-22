@@ -20,7 +20,6 @@
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-1": "^6.24.1",
     "bootstrap": "^3.3.7",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
@@ -36,7 +35,6 @@
   },
   "dependencies": {
     "body-parser": "^1.17.2",
-    "canvasjs": "^1.8.1",
     "compression": "^1.6.2",
     "express": "^4.15.3",
     "mongodb": "^2.2.29",

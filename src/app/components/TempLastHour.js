@@ -1,6 +1,6 @@
 'use strict'
 import React from 'react'
-import DateFormat from '../helpers/DateFormat.js'
+import dateFormat from 'dateformat'
 
 export default class TempLastHour extends React.Component {
   shouldComponentUpdate (nextProps, nextState) {
@@ -11,7 +11,7 @@ export default class TempLastHour extends React.Component {
     let tempNodes = this.props.tempLastHour.map((temp) => {
       return (
         <tr key={temp._id}>
-          <td>{DateFormat.toDateTimeString(new Date(+temp['x']))}</td>
+          <td>{dateFormat(temp['x'], 'm/d/yyyy h:MM TT')}</td>
           <td>{temp['y'].toFixed(2)} °F</td>
         </tr>
         )

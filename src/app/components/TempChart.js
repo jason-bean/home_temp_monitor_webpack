@@ -1,6 +1,6 @@
 'use strict'
 import React from 'react'
-import DateFormat from '../helpers/DateFormat.js'
+import dateFormat from 'dateformat'
 import './canvasjs.min'
 
 let chart = null
@@ -42,9 +42,9 @@ export default class TempChart extends React.Component {
             let currentDate = new Date()
 
             if (recorded.getMonth() === currentDate.getMonth() && recorded.getDate() === currentDate.getDate() && recorded.getFullYear() === currentDate.getFullYear()) {
-              dateString = DateFormat.toTimeString(recorded)
+              dateString = dateFormat(recorded, 'h:MM TT')
             } else {
-              dateString = DateFormat.toDateTimeString(recorded)
+              dateString = dateFormat(recorded, 'm/d/yyyy h:MM TT')
             }
 
             return 'Recorded: <strong>' + dateString + '</strong><br/>Temperature: <strong>' + parseFloat(e.entries[0].dataPoint.y.toFixed(2)) + ' °F</strong>'

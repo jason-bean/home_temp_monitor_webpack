@@ -1,6 +1,6 @@
 'use strict'
 import React from 'react'
-import DateFormat from '../helpers/DateFormat.js'
+import dateFormat from 'dateformat'
 
 export default class UpdatedDateTime extends React.Component {
   shouldComponentUpdate (nextProps, nextState) {
@@ -14,7 +14,7 @@ export default class UpdatedDateTime extends React.Component {
           <tbody>
             <tr>
               <td>Updated:</td>
-              <td>{DateFormat.toFullDateTimeString(this.props.updatedDateTime)}</td>
+              <td>{dateFormat(this.props.updatedDateTime, 'm/d/yyyy h:MM TT')}</td>
             </tr>
           </tbody>
         </table>

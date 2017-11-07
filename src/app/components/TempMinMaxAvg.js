@@ -1,6 +1,6 @@
 'use strict'
 import React from 'react'
-import DateFormat from '../helpers/DateFormat.js'
+import dateFormat from 'dateformat'
 
 export default class TempMinMaxAvg extends React.Component {
   shouldComponentUpdate (nextProps, nextState) {
@@ -16,8 +16,8 @@ export default class TempMinMaxAvg extends React.Component {
             <span className='hidden-lg hidden-md hidden-sm'>Min Temp</span>
           </caption>
           <tbody>
-            <tr>
-              <td>{DateFormat.toDateTimeString(new Date(+this.props.minTemp['x']))}</td>
+            <tr key={this.props.minTemp['_id']}>
+              <td>{dateFormat(this.props.minTemp['x'], 'm/d/yyyy h:MM TT')}</td>
               <td>{this.props.minTemp['y'].toFixed(2)} °F</td>
             </tr>
           </tbody>
@@ -28,8 +28,8 @@ export default class TempMinMaxAvg extends React.Component {
             <span className='hidden-lg hidden-md hidden-sm'>Max Temp</span>
           </caption>
           <tbody>
-            <tr>
-              <td>{DateFormat.toDateTimeString(new Date(+this.props.maxTemp['x']))}</td>
+            <tr key={this.props.maxTemp['_id']}>
+              <td>{dateFormat(this.props.maxTemp['x'], 'm/d/yyyy h:MM TT')}</td>
               <td>{this.props.maxTemp['y'].toFixed(2)} °F</td>
             </tr>
           </tbody>
